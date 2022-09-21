@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function Table() {
-  const { requestPlanets, planets, isLoading } = useContext(PlanetsContext);
+  const { requestPlanets, planets, isLoading, filteredName } = useContext(PlanetsContext);
+  console.log('planets: ', planets);
 
   useEffect(() => {
     requestPlanets();
@@ -33,7 +34,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {planets.map((planet) => (
+          {planets && filteredName.map((planet) => (
             <tr key={ planet.name } className="column">
               <td className="line">{planet.name}</td>
               <td className="line">{planet.rotation_period}</td>
@@ -44,7 +45,7 @@ function Table() {
               <td className="line">{planet.terrain}</td>
               <td className="line">{planet.surface_water}</td>
               <td className="line">{planet.population}</td>
-              <td className="line">{planet.films}</td>
+              <td className="line">{planet.films.map((e) => e)}</td>
               <td className="line">{planet.created}</td>
               <td className="line">{planet.edited}</td>
               <td className="line">{planet.url}</td>
