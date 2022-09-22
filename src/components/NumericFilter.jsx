@@ -23,20 +23,20 @@ function NumericFilter() {
     setValue(target.value);
   };
 
-  function handleSubmitNumeric() {
-    let filteredOptions = [];
+  function handleSubmit() {
+    let selectedFilters = [];
     if (comparison === 'maior que') {
-      filteredOptions = filteredPlanets.filter((item) => item[column]
-        !== 'unknown' && +item[column] > +value);
+      selectedFilters = filteredPlanets.filter((planet) => planet[column]
+        !== 'unknown' && +planet[column] > +value);
     }
     if (comparison === 'menor que') {
-      filteredOptions = filteredPlanets.filter((item) => item[column]
-        !== 'unknown' && +item[column] < +value);
+      selectedFilters = filteredPlanets.filter((planet) => planet[column]
+        !== 'unknown' && +planet[column] < +value);
     }
     if (comparison === 'igual a') {
-      filteredOptions = filteredPlanets.filter((item) => +item[column] === +value);
+      selectedFilters = filteredPlanets.filter((planet) => +planet[column] === +value);
     }
-    setFilteredPlanets(filteredOptions);
+    setFilteredPlanets(selectedFilters);
   }
 
   return (
@@ -78,7 +78,7 @@ function NumericFilter() {
         <button
           type="button"
           data-testid="button-filter"
-          onClick={ handleSubmitNumeric }
+          onClick={ handleSubmit }
         >
           FILTRAR
         </button>
