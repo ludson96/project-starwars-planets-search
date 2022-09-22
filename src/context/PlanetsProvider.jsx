@@ -8,6 +8,7 @@ function PlanetsProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [inputNameFilter, setInputNameFilter] = useState('');
   const [filteredPlanets, setFilteredPlanets] = useState([]);
+  const [todosFiltros, setTodosFiltros] = useState([]);
 
   const requestPlanets = async () => {
     try {
@@ -30,6 +31,8 @@ function PlanetsProvider({ children }) {
     setInputNameFilter,
     filteredPlanets,
     setFilteredPlanets,
+    todosFiltros,
+    setTodosFiltros,
   };
 
   return (

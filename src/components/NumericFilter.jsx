@@ -4,11 +4,17 @@ import PlanetsContext from '../context/PlanetsContext';
 function NumericFilter() {
   const [column, setColumn] = useState('population');
   const [comparison, setComparison] = useState('maior que');
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState('0');
+  const tiposColunas = ['population', 'orbital_period',
+    'diameter', 'rotation_period', 'surface_water'];
+  const [columnSelect, setColumnSelect] = useState(tiposColunas);
+
+  const tiposOperadores = ['maior que', 'menor que', 'igual a'];
 
   const {
     filteredPlanets,
     setFilteredPlanets,
+    todosFiltros, setTodosFiltros,
   } = useContext(PlanetsContext);
 
   const handleChangeColumn = ({ target }) => {
@@ -36,7 +42,16 @@ function NumericFilter() {
     if (comparison === 'igual a') {
       selectedFilters = filteredPlanets.filter((planet) => +planet[column] === +value);
     }
+    const tiposFiltros = {
+      column,
+      comparison,
+      value,
+    };
+    const newfilter = columnSelect.filter((item) => item !== column);
+    setTodosFiltros([...todosFiltros, tiposFiltros]);
     setFilteredPlanets(selectedFilters);
+    setColumnSelect(newfilter);
+    setColumn(newfilter[0]);
   }
 
   return (
@@ -49,11 +64,16 @@ function NumericFilter() {
           value={ column }
           onChange={ handleChangeColumn }
         >
-          <option value="population">population</option>
-          <option value="orbital_period">orbital_period</option>
-          <option value="diameter">diameter</option>
-          <option value="rotation_period">rotation_period</option>
-          <option value="surface_water">surface_water</option>
+          {
+            columnSelect.map((item) => (
+              <option
+                value={ item }
+                key={ item }
+              >
+                {item}
+              </option>
+            ))
+          }
         </select>
 
         <select
@@ -62,9 +82,17 @@ function NumericFilter() {
           value={ comparison }
           onChange={ handleChangeComparison }
         >
-          <option value="maior que">maior que</option>
-          <option value="menor que">menor que</option>
-          <option value="igual a">igual a</option>
+          {
+            tiposOperadores.map((item) => (
+              <option
+                id="id"
+                value={ item }
+                key={ item }
+              >
+                {item}
+              </option>
+            ))
+          }
         </select>
 
         <input
@@ -83,6 +111,20 @@ function NumericFilter() {
           FILTRAR
         </button>
       </form>
+
+      {
+        todosFiltros.map((item) => (
+          <div key={ item.column }>
+            <p>{`${item.column} ${item.comparison} ${item.value}`}</p>
+            <button
+              type="button"
+              // onClick={ handleEraseBtn }
+            >
+              apagar
+            </button>
+          </div>
+        ))
+      }
     </div>
   );
 }
