@@ -4,15 +4,17 @@ import PlanetsContext from './PlanetsContext';
 import ISSApi from '../services/ISSApi';
 
 function PlanetsProvider({ children }) {
-  const [planets, setPlanets] = useState();
+  const [planets, setPlanets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [filterByName, setFilterByName] = useState({ name: '' });
+  const [inputNameFilter, setInputNameFilter] = useState('');
+  const [filteredPlanets, setFilteredPlanets] = useState([]);
 
   const requestPlanets = async () => {
     try {
       const data = await ISSApi();
       const result = data.results.filter((e) => e !== 'residents');
       setPlanets(result);
+      setFilteredPlanets(result);
     } catch (error) {
       setError('Erro na API');
     } finally {
@@ -20,22 +22,14 @@ function PlanetsProvider({ children }) {
     }
   };
 
-  // função que filtra pelo input name
-  function handleChangeName({ target }) {
-    setFilterByName({ name: target.value });
-  }
-
-  const filteredName = filterByName.name.length > 0
-    ? planets.filter((item) => item.name.includes(filterByName.name))
-    : planets;
-
   const planetsContextValue = {
-    requestPlanets,
-    isLoading,
     planets,
-    filterByName,
-    handleChangeName,
-    filteredName,
+    isLoading,
+    requestPlanets,
+    inputNameFilter,
+    setInputNameFilter,
+    filteredPlanets,
+    setFilteredPlanets,
   };
 
   return (

@@ -2,12 +2,14 @@ import React from 'react';
 import './App.css';
 import PlanetsProvider from './context/PlanetsProvider';
 import Table from './components/Table';
-import Header from './components/Header';
+import InputNameFilter from './components/InputNameFilter';
+import NumericFilter from './components/NumericFilter';
 
 function App() {
   return (
     <PlanetsProvider>
-      <Header />
+      <InputNameFilter />
+      <NumericFilter />
       <Table />
     </PlanetsProvider>
   );
