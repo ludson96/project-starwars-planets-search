@@ -4,7 +4,7 @@ import PlanetsContext from '../context/PlanetsContext';
 function Table() {
   const { requestPlanets,
     isLoading, filteredPlanets } = useContext(PlanetsContext);
-  console.log('filteredPlanets', filteredPlanets);
+  // console.log('filteredPlanets', filteredPlanets);
 
   useEffect(() => {
     requestPlanets();
@@ -37,7 +37,7 @@ function Table() {
         <tbody>
           {filteredPlanets.map((planet) => (
             <tr key={ planet.name } className="column">
-              <td className="line">{planet.name}</td>
+              <td className="line" data-testid="name-planet">{planet.name}</td>
               <td className="line">{planet.rotation_period}</td>
               <td className="line">{planet.orbital_period}</td>
               <td className="line">{planet.diameter}</td>

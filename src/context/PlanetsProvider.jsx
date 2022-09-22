@@ -15,8 +15,8 @@ function PlanetsProvider({ children }) {
       const result = data.results.filter((e) => e !== 'residents');
       setPlanets(result);
       setFilteredPlanets(result);
-    } catch (error) {
-      setError('Erro na API');
+    // } catch (error) {
+      // setError('Erro na API');
     } finally {
       setIsLoading(false);
     }
