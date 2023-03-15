@@ -54,6 +54,13 @@ function NumericFilter() {
     setColumn(newfilter[0]);
   }
 
+  const handleEraseBtn = ({ target }) => {
+    const recoveredColumn = (target.previousElementSibling.innerText).split(' ');
+    setColumnSelect(columnSelect.concat(recoveredColumn[0]));
+    const teste = todosFiltros.filter((filter) => filter.column !== recoveredColumn[0]);
+    setTodosFiltros(teste);
+  };
+
   return (
     <div>
 
@@ -113,12 +120,12 @@ function NumericFilter() {
       </form>
 
       {
-        todosFiltros.map((item) => (
-          <div key={ item.column }>
+        todosFiltros.map((item, i) => (
+          <div key={ i } data-testid="filter">
             <p>{`${item.column} ${item.comparison} ${item.value}`}</p>
             <button
               type="button"
-              // onClick={ handleEraseBtn }
+              onClick={ handleEraseBtn }
             >
               apagar
             </button>
