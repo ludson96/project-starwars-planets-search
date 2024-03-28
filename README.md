@@ -21,7 +21,9 @@
 [![CSS3][CSS3-logo]][CSS3-url]
 [![JavaScript][JavaScript-logo]][JavaScript-url]
 [![React][React-logo]][React-url]
+[![Jest][Jest-logo]][Jest-url]
 [![RTL][RTL-logo]][RTL-url]
+[![Mocha][Mocha-logo]][Mocha-url]
 
 ## O que foi desenvolvido
 
@@ -80,5 +82,9 @@ Neste projeto, desenvolvi as seguintes habilidades:
 [JavaScript-url]: https://www.javascript.com/
 [React-logo]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
 [React-url]: https://reactjs.org
+[Jest-logo]: https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white
+[Jest-url]: https://jestjs.io
 [RTL-logo]: https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white
 [RTL-url]: https://testing-library.com/
+[Mocha-logo]: https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white
+[Mocha-url]: https://mochajs.org
