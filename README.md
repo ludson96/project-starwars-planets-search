@@ -1,4 +1,4 @@
-# Repositório do projeto Star Wars Planets Search
+# Repositório do projeto Star Wars Planets Search 🌌
 
 # 🚧 Estilização em desenvolvimento ! 🚧
 
